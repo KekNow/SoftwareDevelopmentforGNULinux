@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char** argv) {
+	if (argc != 3) {
+		fprintf(stderr, "wrong number of input arguments\n");
+		return 1;
+	}
+	if (strcmp(argv[1], argv[2]) == 0) {
+		fprintf(stderr, "infile and outfile should be different\n");
+		return 2;
+	}
+
+	FILE *infile, *outfile;
+
+	infile = fopen(argv[1], "r");
+	if (infile == NULL) {
+		fprintf(stderr, "error while opening infile\n");
+
+		return 3;
+	}
+	outfile = fopen(argv[2], "w");
+	if (outfile == NULL) {
+		fprintf(stderr, "error while opening outfile\n");
+		if (fclose(infile) != 0) {
+			fprintf(stderr, "error while closing infile\n");
+			return 46;
+		}
+		return 4;
+	}
+
+	int err;
+	char line[4096];
+	while (feof(infile) == 0) {
+		if (fgets(line, 4096, infile) == NULL) {
+			fprintf(stderr, "error while reading the line\n");
+			err = 5;
+			if (fclose(infile) != 0) {
+				fprintf(stderr, "error while closing infile\n");
+				err = err * 10 + 6;
+			}
+			if (fclose(outfile) != 0) {
+				fprintf(stderr, "error while closing outfile\n");
+				err = err * 10 + 7;
+			}
+			if (remove(argv[2]) != 0) {
+				fprintf(stderr, "error while deleting outfile\n");
+				err = err * 10 + 8;
+			}
+			return err;
+		}
+		fputs(line, outfile);
+	}
+
+	err = 0;
+	if (fclose(infile) != 0) {
+		fprintf(stderr, "error while closing infile\n");
+		err = err * 10 + 6;
+	}
+	if (fclose(outfile) != 0) {
+		fprintf(stderr, "error while closing outfile\n");
+		err = err * 10 + 7;
+	}
+	if (remove(argv[1]) != 0) {
+		fprintf(stderr, "error while deleting infile\n");
+		err = err * 10 + 9;
+	}
+	return err;
+}
