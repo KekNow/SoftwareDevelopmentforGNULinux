@@ -17,54 +17,48 @@ int main(int argc, char** argv) {
 	infile = fopen(argv[1], "r");
 	if (infile == NULL) {
 		fprintf(stderr, "error while opening infile\n");
-
 		return 3;
 	}
-	outfile = fopen(argv[2], "w");
+	outfile = fopen(argv[2], "wb");
 	if (outfile == NULL) {
 		fprintf(stderr, "error while opening outfile\n");
-		if (fclose(infile) != 0) {
-			fprintf(stderr, "error while closing infile\n");
-			return 46;
-		}
 		return 4;
 	}
-
-	int err;
-	char line[4096];
+	
+	int size_buf;
+	char buf[100];
 	while (feof(infile) == 0) {
-		if (fgets(line, 4096, infile) == NULL) {
-			fprintf(stderr, "error while reading the line\n");
-			err = 5;
-			if (fclose(infile) != 0) {
-				fprintf(stderr, "error while closing infile\n");
-				err = err * 10 + 6;
-			}
-			if (fclose(outfile) != 0) {
-				fprintf(stderr, "error while closing outfile\n");
-				err = err * 10 + 7;
-			}
-			if (remove(argv[2]) != 0) {
-				fprintf(stderr, "error while deleting outfile\n");
-				err = err * 10 + 8;
-			}
-			return err;
+		if ((size_buf = fread(buf, sizeof(char), 100, infile)) != 100 && !feof(infile)) {
+			fprintf(stderr, "error while reading the buf[100]\n");
+			fclose(infile);
+			fclose(outfile);
+			remove(argv[2]);
+			return 5;
 		}
-		fputs(line, outfile);
+		if (fwrite(buf, sizeof(char), size_buf, outfile) < size_buf) {
+			fprintf(stderr, "error while writing the buf[100]\n");
+			fclose(infile);
+			fclose(outfile);
+			remove(argv[2]);
+			return 6;
+		}
 	}
 
-	err = 0;
 	if (fclose(infile) != 0) {
 		fprintf(stderr, "error while closing infile\n");
-		err = err * 10 + 6;
+		fclose(outfile);
+		remove(argv[2]);
+		return 7;
 	}
 	if (fclose(outfile) != 0) {
 		fprintf(stderr, "error while closing outfile\n");
-		err = err * 10 + 7;
+		remove(argv[2]);
+		return 8;
 	}
 	if (remove(argv[1]) != 0) {
 		fprintf(stderr, "error while deleting infile\n");
-		err = err * 10 + 9;
+		remove(argv[2]);
+		return 9;
 	}
-	return err;
+	return 0;
 }
