@@ -1,10 +1,10 @@
 Connfigurate:  
 getline:  
-autoreconf -fisv && ./configure --enable-readline  
+autoreconf -fisv && ./configure  
 make  
 
 readline:  
-autoreconf -fisv && ./configure  
+autoreconf -fisv && ./configure --enable-readline  
 make  
 
 Test:  
