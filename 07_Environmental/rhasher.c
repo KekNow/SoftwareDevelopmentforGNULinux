@@ -14,6 +14,7 @@
 ssize_t readline_or_getline(char **line) {
 	#if READLINE_FLAG
 		*line = readline(NULL);
+		if (*line == NULL) { return -1; }
 		return strlen(*line);
 	#else
 		size_t length = 0;
