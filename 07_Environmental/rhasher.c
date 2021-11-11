@@ -5,14 +5,14 @@
 #include <rhash.h>
 #include "config.h"
 
-//#define READLINE_CONF 1
-#if READLINE_CONF
+//#define READLINE_FLAG 1
+#if READLINE_FLAG
 	#include <readline/readline.h>
 	#include <readline/history.h>
 #endif
 
 ssize_t readline_or_getline(char **line) {
-	#if READLINE_CONF
+	#if READLINE_FLAG
 		*line = readline(NULL);
 		return strlen(*line);
 	#else

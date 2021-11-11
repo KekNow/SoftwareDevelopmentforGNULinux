@@ -23,7 +23,7 @@ AC_TYPE_SSIZE_T
 AC_ARG_ENABLE(
 	[readline],
 	AS_HELP_STRING([--enable-readline], [Readline activate]),
-	AC_DEFINE(USE_READLINE,[1],[Readline activate]),
+	AC_DEFINE(READLINE_FLAG,[1],[Readline activate]),
 	[readline_mode="deactivate"]
   )
 AS_IF([test "x$readline_mode" = "xdeactivate"], [
