@@ -1,1 +1,1 @@
-Solution of Task 8
+Solution of task 8
