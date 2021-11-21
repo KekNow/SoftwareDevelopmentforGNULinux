@@ -1,11 +1,11 @@
 Solution of task 8
 
-CONFIGURATE:
+CONFIGURATE:  
 autoreconf -fisv && ./configure
 make
 
-TEST:
+TEST:  
 make test
 
-CLEAR:
+CLEAR:  
 make clean
