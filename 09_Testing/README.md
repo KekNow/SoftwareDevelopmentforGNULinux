@@ -1,8 +1,9 @@
 Solution of task 9
 
 CONFIGURATE:  
-autoreconf -fisv && ./configure make
+autoreconf -fisv && ./configure --enable-gcov  
+make
 
 TEST:  
-make test
+make check  
 make gcov
