@@ -14,7 +14,7 @@ int main() {
 	textdomain ("binsearch");
 
 	printf(_("Choose number from [1..100] (in the mind)\n"));
-	char response[3];
+	char response[10];
 	int left = 1, right = 100, middle;
 	while (left < right) {
 		middle = (left + right) / 2;
