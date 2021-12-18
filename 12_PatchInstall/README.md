@@ -1,7 +1,7 @@
 # Solution of task 12  
 
 ## Configure:  
-autoreconf -fisv && ./configure --prefix=/usr && make. 
+autoreconf -fisv && ./configure --prefix=/usr && make  
 
 ## Usage:  
 ### In russian:  
