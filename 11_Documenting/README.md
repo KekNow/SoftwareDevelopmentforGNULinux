@@ -1,10 +1,17 @@
-Solution of task 11  
+# Solution of task 11  
 
-CONFIGURATE:  
+## Configure:  
 autoreconf -fisv && ./configure && make  
 
-TEST:  
-In russian:  
+## Usage:  
+### In russian:  
 LANG=ru_RU.UTF-8 ./binsearch  
-In english:  
+### In english:  
 LANG=en_EN.UTF-8 ./binsearch
+### Use Roman numerals:
+./binsearch -r
+
+## Manual:  
+./binsearch --version
+./binsearch --help
+browse doxygen-doc/html/index.html
