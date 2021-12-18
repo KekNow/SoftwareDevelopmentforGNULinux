@@ -11,7 +11,10 @@ LANG=en_EN.UTF-8 ./binsearch
 ### Use Roman numerals:
 ./binsearch -r
 
+## Hints:  
+./binsearch --version  
+./binsearch --help  
+
 ## Manual:  
-./binsearch --version
-./binsearch --help
+man -l binsearch.1
 browse doxygen-doc/html/index.html
