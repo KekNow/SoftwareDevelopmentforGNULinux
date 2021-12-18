@@ -1,4 +1,4 @@
-# Solution of task 11  
+# Solution of task 12  
 
 ## Configure:  
 autoreconf -fisv && ./configure --prefix=/usr && make. 
