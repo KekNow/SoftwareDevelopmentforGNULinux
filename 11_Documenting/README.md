@@ -4,14 +4,16 @@
 autoreconf -fisv && ./configure && make  
 
 ## Usage:  
-### In russian:  
+### In russian and english languages:  
 LANG=ru_RU.UTF-8 ./binsearch  
-### In english:  
 LANG=en_EN.UTF-8 ./binsearch  
 ### Use Roman numerals:
 ./binsearch -r  
 
-## Manual:  
+## Hints:  
 ./binsearch --version  
 ./binsearch --help  
+
+## Manual:  
+man -l binsearch.1  
 browse doxygen-doc/html/index.html
