@@ -16,5 +16,5 @@ LANG=en_EN.UTF-8 ./binsearch
 ./binsearch --help  
 
 ## Manual:  
-man -l binsearch.1
+man -l binsearch.1  
 browse doxygen-doc/html/index.html
