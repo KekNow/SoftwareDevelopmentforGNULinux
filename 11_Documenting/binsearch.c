@@ -1,10 +1,11 @@
-/*! 
- * \Binsearch using human
- *
- * Usage: ./binsearch [OPTIONS]\n
- *   \-\-version   print current version \n
- *   \-\-help      print help \n
- *   \-r           use roman numerals \n
+/**
+ * @file binsearch.c
+ * 
+ * Usage: ./binsearch [OPTIONS]
+ * -\-version   print current version
+ * -\-help      print help
+ * -r          use roman numerals
+ * 
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,21 +28,21 @@ Usage: ./binsearch [OPTIONS] \n\
 char* roman_numerals[] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL", "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX", "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"};
 
 /**
-* Describe
-* @param i The number from 1 to 100
-* 
-* @returns 
-*/
+ * This function converts an Arabic number to a Roman number
+ * @param num Number from 1 to 100 in Arabic number
+ * 
+ * @returns num in the Roman numeral
+ */
 char* romanize(int num) {
 	return roman_numerals[num - 1];
 }
 
 /**
-* Describe
-* @param rome_num The number from I to C in roman numeral system
-* 
-* @returns The number decimal system
-*/
+ * This function converts a Roman numerals to an Arabic numerals
+ * @param rome_num Number from I to C in Roman numeral
+ * 
+ * @returns rome_num in the Arabic numeral
+ */
 int unromanize(char* rome_num) {
 	for (int i = 0; i < sizeof(roman_numerals); i++) {
 		if (strcmp(rome_num, roman_numerals[i]) == 0) { return i + 1; }
@@ -49,7 +50,10 @@ int unromanize(char* rome_num) {
 }
 
 /**
- * @param
+ * This function guesses what number a person has guessed based on his answers.
+ * @param argc number of arguments from console
+ * @param argv arguments from console
+ * @returns 0
  */
 int main(int argc, char** argv) {
 	setlocale (LC_ALL, "");

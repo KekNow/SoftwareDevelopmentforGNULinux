@@ -3,6 +3,8 @@ pkgdata_DATA=ru/LC_MESSAGES/binsearch.mo
 
 @DX_RULES@
 
+all-local: doxygen-doc
+
 ru/LC_MESSAGES/binsearch.mo: ru.po
 	mkdir -p `dirname $@`
 	msgfmt $< -o $@
