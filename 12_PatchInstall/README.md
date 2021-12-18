@@ -1,10 +1,19 @@
-Solution of task 10
+# Solution of task 11  
 
-CONFIGURATE:  
-autoreconf -fisv && ./configure && make
+## Configure:  
+autoreconf -fisv && ./configure --prefix=/usr && make. 
 
-TEST:  
-In russian:  
+## Usage:  
+### In russian:  
 LANG=ru_RU.UTF-8 ./binsearch  
-In english:  
+### In english:  
 LANG=en_EN.UTF-8 ./binsearch
+
+## Hints:  
+./binsearch --version  
+./binsearch --help  
+man -l binsearch.1  
+
+
+## Install:  
+make install DESTDIR=<path_to_example_directory>
