@@ -16,7 +16,7 @@ messages.pot: binsearch.pot binsearch.c
 	cp binsearch.pot messages.pot
 	msgmerge -U messages.pot messages.new.pot
 
-man:
+binsearch.1:
 	help2man --no-info --output="binsearch.1" --name='@PACKAGE_NAME@' ./binsearch
 
 clean:
